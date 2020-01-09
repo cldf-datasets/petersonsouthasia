@@ -5,6 +5,21 @@ import collections
 from cldfbench import Dataset as BaseDataset
 from cldfbench import CLDFSpec, Metadata
 
+SRC = """
+@article{Peterson2017,
+  doi = {10.1515/jsall-2017-0008},
+  url = {https://doi.org/10.1515/jsall-2017-0008},
+  year = {2017},
+  month = jan,
+  publisher = {Walter de Gruyter {GmbH}},
+  volume = {4},
+  number = {2},
+  author = {John Peterson},
+  title = {Fitting the pieces together - Towards a linguistic prehistory of eastern-central South Asia (and beyond)},
+  journal = {Journal of South Asian Languages and Linguistics}
+}
+"""
+
 
 class MetadataWithTravis(Metadata):
     def markdown(self):
@@ -37,6 +52,8 @@ class Dataset(BaseDataset):
         args.writer.cldf.add_component('ParameterTable')
         args.writer.cldf.add_component('CodeTable')
         args.writer.cldf['ValueTable', 'Value'].null = ['?']
+
+        args.writer.cldf.add_sources(SRC)
 
         codes = collections.OrderedDict()
         for (fid, fname), rows in itertools.groupby(
@@ -79,4 +96,5 @@ class Dataset(BaseDataset):
                         'Parameter_ID': pid,
                         'Value': v,
                         'Code_ID': '{0}-{1}'.format(pid, v) if v != '?' else None,
+                        'Source': ['Peterson2017']
                     })

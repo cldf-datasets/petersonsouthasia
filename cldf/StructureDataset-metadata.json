@@ -8,6 +8,7 @@
     "dc:bibliographicCitation": "Peterson, J. (2017). Fitting the pieces together \u2013 Towards a linguistic prehistory of eastern-central South Asia (and beyond) . Journal of South Asian Languages and Linguistics, 4(2), pp. 211-257. Retrieved 9 Jan. 2020, from doi:10.1515/jsall-2017-0008",
     "dc:conformsTo": "http://cldf.clld.org/v1.0/terms.rdf#StructureDataset",
     "dc:identifier": "https://doi.org/10.1515/jsall-2017-0008",
+    "dc:source": "sources.bib",
     "dc:title": "Towards a linguistic prehistory of eastern-central South Asia",
     "dcat:accessURL": "https://github.com/cldf-datasets/petersonsouthasia",
     "prov:wasDerivedFrom": [
@@ -15,7 +16,7 @@
             "rdf:type": "prov:Entity",
             "dc:title": "Repository",
             "rdf:about": "https://github.com/cldf-datasets/petersonsouthasia",
-            "dc:created": "668d94a"
+            "dc:created": "c996a20"
         },
         {
             "rdf:type": "prov:Entity",
