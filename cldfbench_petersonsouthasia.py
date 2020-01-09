@@ -3,12 +3,28 @@ import itertools
 import collections
 
 from cldfbench import Dataset as BaseDataset
-from cldfbench import CLDFSpec
+from cldfbench import CLDFSpec, Metadata
+
+
+class MetadataWithTravis(Metadata):
+    def markdown(self):
+        lines, title_found = [], False
+        for line in super().markdown().split('\n'):
+            lines.append(line)
+            if line.startswith('# ') and not title_found:
+                title_found = True
+                lines.extend([
+                    '',
+                    "[![Build Status](https://travis-ci.org/cldf-datasets/ewave.svg?branch=master)]"
+                    "(https://travis-ci.org/cldf-datasets/ewave)"
+                ])
+        return '\n'.join(lines)
 
 
 class Dataset(BaseDataset):
     dir = pathlib.Path(__file__).parent
     id = "petersonsouthasia"
+    metadata_cls = MetadataWithTravis
 
     def cldf_specs(self):  # A dataset must declare all CLDF sets it creates.
         return CLDFSpec(dir=self.cldf_dir, module='StructureDataset')
