@@ -48,12 +48,14 @@ class Dataset(BaseDataset):
         pass
 
     def cmd_makecldf(self, args):
-        args.writer.cldf.add_component('LanguageTable')
+        args.writer.cldf.add_component('LanguageTable', 'Family_name')
         args.writer.cldf.add_component('ParameterTable')
         args.writer.cldf.add_component('CodeTable')
         args.writer.cldf['ValueTable', 'Value'].null = ['?']
 
         args.writer.cldf.add_sources(SRC)
+
+        langs = {l.id: l for l in args.glottolog.api.languoids()}
 
         codes = collections.OrderedDict()
         for (fid, fname), rows in itertools.groupby(
@@ -70,6 +72,12 @@ class Dataset(BaseDataset):
                 })
 
         for l in self.etc_dir.read_csv('languages.csv', dicts=True):
+            glang = langs[l['Glottocode']]
+            l['Macroarea'] = glang.macroareas[0].name
+            l['Latitude'] = glang.latitude
+            l['Longitude'] = glang.longitude
+            l['ISO639P3code'] = glang.iso
+            l['Family_name'] = glang.lineage[0][0]
             args.writer.objects['LanguageTable'].append(l)
 
         for i, row in enumerate(self.raw_dir.read_csv('Tabelle1.csv', dicts=True)):
