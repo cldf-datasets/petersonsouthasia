@@ -1,6 +1,6 @@
 # Towards a linguistic prehistory of eastern-central South Asia
 
-[![Build Status](https://travis-ci.org/cldf-datasets/ewave.svg?branch=master)](https://travis-ci.org/cldf-datasets/ewave)
+[![Build Status](https://travis-ci.org/cldf-datasets/petersonsouthasia.svg?branch=master)](https://travis-ci.org/cldf-datasets/petersonsouthasia)
 
 Cite the source dataset as
 

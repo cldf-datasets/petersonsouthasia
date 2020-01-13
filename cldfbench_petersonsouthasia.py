@@ -30,8 +30,8 @@ class MetadataWithTravis(Metadata):
                 title_found = True
                 lines.extend([
                     '',
-                    "[![Build Status](https://travis-ci.org/cldf-datasets/ewave.svg?branch=master)]"
-                    "(https://travis-ci.org/cldf-datasets/ewave)"
+                    "[![Build Status](https://travis-ci.org/cldf-datasets/petersonsouthasia.svg?branch=master)]"
+                    "(https://travis-ci.org/cldf-datasets/petersonsouthasia)"
                 ])
         return '\n'.join(lines)
 
