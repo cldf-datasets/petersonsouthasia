@@ -96,13 +96,13 @@ class Dataset(BaseDataset):
             for j, v in enumerate(row.values()):
                 if j == 0:
                     lid = v
-                else:
+                elif v != '?':
                     pid = list(codes.keys())[j - 1]
                     args.writer.objects['ValueTable'].append({
                         'ID': '{0}-{1}'.format(lid, str(j)),
                         'Language_ID': lid,
                         'Parameter_ID': pid,
                         'Value': v,
-                        'Code_ID': '{0}-{1}'.format(pid, v) if v != '?' else None,
+                        'Code_ID': '{0}-{1}'.format(pid, v),
                         'Source': ['Peterson2017']
                     })
